@@ -38,6 +38,9 @@ Instead of treating Git as a black box, MiniGit explores concepts such as:
 - [ ] Branch switching
 
 // Commenti per me stesso
+
+**FARE IL MAKEFILE**
+
 ## Obiettivo
 Deve funzionare questo:
 minigit init
