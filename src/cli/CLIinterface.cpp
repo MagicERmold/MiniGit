@@ -62,5 +62,7 @@ int CLIinterface::run(int argc, char* argv[]){
     default:
         break;
     }
+
+    return 0;
 }
 

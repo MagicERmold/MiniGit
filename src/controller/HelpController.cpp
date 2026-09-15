@@ -2,5 +2,5 @@
 #include <iostream>
 
 int HelpController::helpOperation(){
-    
+    return 0;
 }

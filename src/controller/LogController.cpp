@@ -2,5 +2,5 @@
 #include <iostream>
 
 int LogController::logOperation(){
-    
+    return 0;
 }
