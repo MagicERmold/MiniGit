@@ -26,6 +26,7 @@ Operation CLIinterface::parseOperation(std::string_view operation) { // Define t
     }
 }
 
+// Usare le graffe è una buona pratica quando si dichiarano variabili locali all'interno dello switch per evitare problemi di scope
 int CLIinterface::run(int argc, char* argv[]){
     // Qui andrà la logica con i controlli e lo switch case per le operazioni
     Operation op = parseOperation(argv[1]);
@@ -36,10 +37,34 @@ int CLIinterface::run(int argc, char* argv[]){
         InitController ic;
         ic.initOperation();
         break;
-    case Operation::ADD:
+    // Operazione ADD per aggiungere un file al repository .minigit
+    case Operation::ADD: {
         AddController ac;
-        ac.addOperation();
+        
+        // Controllo se l'utente ha passato almeno un file da aggiungere
+        if (argc < 3) {
+            std::cerr << "Errore: nessun file specificato per l'operazione 'add'." << std::endl;
+            return 1; // Restituisco un codice di errore
+        }
+
+        // Controllo se l'utente ha passato "." come argomento per aggiungere tutti i file nella directory corrente
+        if(std::string(argv[2]) == "."){
+            // Devo aggiungere tutti i file nella directory corrente
+            for (const auto& entry : fs::directory_iterator(fs::current_path())) {
+                if (entry.is_regular_file()) {
+                    // fs::relative converte il percorso assoluto in relativo alla cartella corrente
+                    ac.addOperation(fs::relative(entry.path()));
+                }
+            }
+        } else {
+            // Aggiungo i file specificati come argomenti
+            for(int i = 2; i < argc; ++i) {
+                ac.addOperation(argv[i]);
+            }
+        }
+        
         break;
+}
     case Operation::STATUS:
         StatusController sc;
         sc.statusOperation();
