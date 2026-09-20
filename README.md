@@ -21,8 +21,8 @@ Instead of treating Git as a black box, MiniGit explores concepts such as:
 ## Features
 
 ### Core
-- [ ] Initialize a MiniGit repository
-- [ ] Add files to the staging area
+- [X] Initialize a MiniGit repository
+- [X] Add files to the staging area
 - [ ] Show repository status
 - [ ] Create commits
 - [ ] View commit history
@@ -36,10 +36,6 @@ Instead of treating Git as a black box, MiniGit explores concepts such as:
 ### Future
 - [ ] Branch creation
 - [ ] Branch switching
-
-// Commenti per me stesso
-
-**FARE IL MAKEFILE**
 
 ## Obiettivo
 Deve funzionare questo:
@@ -55,8 +51,3 @@ minigit checkout <commit>
 minigit show <commit>
 minigit diff
 minigit add .
-
-
-Extra:
-minigit branch
-minigit switch

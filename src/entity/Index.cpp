@@ -50,7 +50,7 @@ bool Index::saveToDisk(const fs::path& filePath) const {
 
     // Scrivo le voci nella mappa nel file
     for (const auto& entry : indexEntries_) {
-        outFile << entry.first << ' ' << entry.second << '\n';
+        outFile << entry.first.string() << ' ' << entry.second << '\n';
     }
 
     return true;

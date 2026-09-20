@@ -51,7 +51,7 @@ bool Blob::saveToDisk(const fs::path& repoRoot) const {
 std::string Blob::computeHash(const std::string& data) const {
     // Creiamo il contesto crittografico di OpenSSL
     EVP_MD_CTX* ctx = EVP_MD_CTX_new();
-    if(ctx) return ""; // Se non riesce a creare il contesto, ritorna una stringa vuota
+    if(!ctx) return ""; // Se non riesce a creare il contesto, ritorna una stringa vuota
 
     // Inizializziamo l'algoritmo di hashing SHA-256
     if(EVP_DigestInit_ex(ctx, EVP_sha256(), nullptr) != 1) {
